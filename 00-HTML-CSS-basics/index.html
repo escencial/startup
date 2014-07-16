@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bootcamp - topic 0</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Topic 0: HTML & CSS Basics">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/vendor/normalize.css">
+  </head>
+  
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <div class="container">
+
+      <div class="row clearfix">
+        <div class="column full">
+          <header class="header">
+            <h1>Topic 0: HTML & CSS Basics</h1>
+          </header>
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="column third">  
+          <nav class="nav">
+            <h2>menu<h2>
+            <ul>
+              <li>item</li>
+              <li>item</li>
+              <li>item</li>
+            </ul>
+          </nav>
+        </div>
+      
+        <div class="column third">  
+          <section class="section">
+              <header>
+                <h3>section</h3>
+              </header>
+      
+              <article>
+                <p> - Imagine you have something like class=”oh-no-inline-styles” style=”background:red” and you should change the background to green but without changing the inline style, How could you accomplish this?</p>
+                  <div class="oh-no-inline-styles" style="background-color:red;">
+                </div>
+              </article>
+      
+            <footer>
+              <p>section footer</p>
+            </footer>
+          </section>
+        </div>
+    
+        <div class="column third">  
+          <aside class="aside">
+            <div class="box">
+              <p>aside</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+  
+      <div class="row clearfix">
+        <div class="column full">  
+          <footer class="footer">
+          	footer
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="assets/js/scripts.js"></script>
+  </body>
+
+</html>
