@@ -8,9 +8,7 @@
 
 .container {
   margin: 0 auto;
-  max-width: 48rem;
-  width: 90%;
-  background: #d3d3d3;
+  width: 100%;
 }
 
 @media (min-width: 40rem) {
@@ -18,7 +16,6 @@
     float: left;
     padding-left: 1rem;
     padding-right: 1rem;
-    border-radius: 20px;
   }
   
   .column.full {
@@ -31,9 +28,7 @@
     width: 50%;
   }
   .column.third {
-    width: 33%;
-    background: #3f3f3f;
-    margin: 0.1%;
+    width: 33.03%;
   }
   .column.fourth {
     width: 25%;
@@ -55,6 +50,11 @@
  
 .clearfix {
   overflow: auto;
-  *zoom: 1;
-  background: none!important;
+  zoom: 1;
+}
+
+img {
+  max-width: 100%;
+  border: 0;
+  margin-bottom: 1em;
 }

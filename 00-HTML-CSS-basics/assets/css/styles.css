@@ -1,55 +1,91 @@
 .header {
   font-size: 46px;
-  box-shadow: 0 0.2em 1em #000;
 }
 
-.footer {
-  font-size: 10px;
+.font16 {
+  font-size: 16px;
 }
 
-.content {
-  font-size: 14px;
+.arial {
+  font-family: arial;
 }
 
-.navigation {
-  font-size: 12px;
+.bold {
+  font-weight: bold;
 }
 
-.sidebar {
-  font-size: 10px;
+.title {
+  padding-top: 1em;
+  padding-bottom: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-weight: bolder!important;
 }
 
-.aside {
-  margin: .5em;
+.text {
+  padding-top: 2em;
+  padding-bottom: 4em;
+
+  padding-left: 2em;
+  padding-right: 1em;
 }
 
-*[class$='r'] {
-  background-color: magenta;
+.flechita {
+  background-color: black;
+
+  width: 3em;
+  height: 9em;
+
+  position: fixed;
+  top: 50%;
+  margin-top: -4.5em;
+
+  right:-1px;
+
+  color: white;
+  text-align: center;
+
+  z-index: 999;
+
+  font-weight: normal;
 }
 
-*[class*='a']:not(*[class$='r']) {
-  background-color: blue;
+.flechita > p {
+  margin-top: 4em;
+}
+
+.flechita:hover + .hw {
+  display: block;
+}
+
+.hw {
+  display: none;
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  
+  background: rgba(5,5,5,0.3);
+  text-align: center;
+}
+
+.hw > span {
+  position: fixed;
+  top: 50%;
+  margin-top: -3em;
+  color: white;
+  background-color: gray;
+  border-radius: 2em;
+  padding: 3em;
 }
 
 html {
   font-weight: bold;
 }
 
-.oh-no-inline-styles {
-  background-color: green!important;
-  width: 5em; 
-  height: 5em;
-  margin: 0 auto;
-}
-
 h1 {
-  font-size: 26px!important; 
-}
-
-.box {
-    height: 5em;
-    width: 5em;
-    padding: 1em;
-    margin: 1em auto;
-    border: .25em solid;
+  font-size: 26px!important;
 }
