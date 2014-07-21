@@ -1,0 +1,49 @@
+*, 
+*:before, 
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #D3D3D3;
+}
+
+.section_form {
+  display: none;
+}
+
+.highlight {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.column {
+  float: left;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.column.half {
+  width: 50%;
+}
+
+.tweet {
+  border-radius: 2em;
+  background-color: rgba(1,1,1,0.3);
+  padding: 1em;
+  margin: 1em;
+}
+
+img {
+  margin-left : 1em;
+}
