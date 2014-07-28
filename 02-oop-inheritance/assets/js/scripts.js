@@ -1,11 +1,14 @@
 /**
  * Define Movies Module
  */
-var Movie = (function () {
+var Movie = function () {
   // set Vars
-  var attributes = {};
+  this.attributes = {};
+  this.attributes.actors = [];
+};
+
+Movie.prototype = (function () {
   var observers = [];
-  attributes.actors = [];
   // public ..
   return {
     play: function () {
@@ -19,12 +22,13 @@ var Movie = (function () {
     // Get Method
     get: function (attr) {
       console.log('get');
-      return attributes[attr];
+      console.log(this);
+      return this.attributes[attr];
     },
     // Set Method
     set: function (attr, value) {
       console.log('set');
-      attributes[attr] = value;
+      this.attributes[attr] = value;
     },
     // Observer Methods
     addObserver: function (name, func) {
@@ -46,30 +50,30 @@ var Movie = (function () {
     // Add an Actor
     addAnActor: function(actor) {
       console.log('setActors');
-      attributes.actors.push(actor);
+      this.attributes.actors.push(actor);
     },
     // Get Actors
     getActors: function() {
       console.log('getActors');
-      attributes.actors.forEach(function(actor){
+      this.attributes.actors.forEach(function(actor){
         console.log(actor.get('name'));
       });
     }
   };
-
 })();
 
 // Add Observers ..
-Movie.addObserver('onPlay', function() {
-  console.log('Playing ' + Movie.get('title') + ' ...');
+Movie.prototype.addObserver('onPlay', function() {
+  console.log('Playing ' + Movie.prototype.get('title') + ' ...');
 });
 
-Movie.addObserver('onStop', function() {
+Movie.prototype.addObserver('onStop', function() {
   console.log('Stoped');
 });
 
 // Create instance of Movie
-var terminator = Object.create(Movie);
+// var terminator = Object.create(Movie);
+var terminator = new Movie();
 terminator.set('title', 'Terminator');
 terminator.play();
 
@@ -93,6 +97,7 @@ var DownloadMovie = (function(){
     }
   };
 })();
+
 // Do heritage
 extend(Movie, DownloadMovie);
 
@@ -100,7 +105,6 @@ extend(Movie, DownloadMovie);
  * Define Social Mixin
  */
 var MixinSocial = {
-
   share: function (friendName) {
     console.log('share with ' + this.get('title') + ' ' + friendName);
   },
