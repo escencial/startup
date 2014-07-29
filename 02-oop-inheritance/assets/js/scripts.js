@@ -1,60 +1,60 @@
-/**
- * Define Movies Module
- */
+// Define Movie
 var Movie = function () {
   // set Vars
   this.attributes = {};
   this.attributes.actors = [];
 };
 
+/**
+ * Define Movies Prototype as a Module
+ */
 Movie.prototype = (function () {
   var observers = [];
   // public ..
   return {
     play: function () {
-      console.log('play');
-      this.notify('onPlay');
+      console.log('Movie/play');
+      this.notify('onPlay', this.attributes['title']);
     },
     stop: function () {
-      console.log('stop');
+      console.log('Movie/stop');
       this.notify('onStop');
     },
     // Get Method
     get: function (attr) {
-      console.log('get');
-      console.log(this);
+      console.log('Movie/get');
       return this.attributes[attr];
     },
     // Set Method
     set: function (attr, value) {
-      console.log('set');
+      console.log('Movie/set');
       this.attributes[attr] = value;
     },
     // Observer Methods
     addObserver: function (name, func) {
-      console.log('addObserver');
+      console.log('Movie/addObserver');
       observers.push({name: name, func: func});
     },
     removeObserver: function (observer) {
-      console.log('removeObserver');
+      console.log('Movie/removeObserver');
       observers.slice(observer);
     },
-    notify: function (obs) {
-      console.log('notify');
+    notify: function (obs, param) {
+      console.log('Movie/notify');
       observers.forEach(function(observer) {
         if (obs === observer.name) {
-         return observer.func();
+         return observer.func(param);
         }
       });
     },
     // Add an Actor
     addAnActor: function(actor) {
-      console.log('setActors');
+      console.log('Movie/setActors');
       this.attributes.actors.push(actor);
     },
     // Get Actors
     getActors: function() {
-      console.log('getActors');
+      console.log('Movie/getActors');
       this.attributes.actors.forEach(function(actor){
         console.log(actor.get('name'));
       });
@@ -63,8 +63,9 @@ Movie.prototype = (function () {
 })();
 
 // Add Observers ..
-Movie.prototype.addObserver('onPlay', function() {
-  console.log('Playing ' + Movie.prototype.get('title') + ' ...');
+Movie.prototype.addObserver('onPlay', function(title) {
+  console.log('Playing ' + title + ' ...');
+  // console.log(Movie.attributes);
 });
 
 Movie.prototype.addObserver('onStop', function() {
@@ -72,7 +73,6 @@ Movie.prototype.addObserver('onStop', function() {
 });
 
 // Create instance of Movie
-// var terminator = Object.create(Movie);
 var terminator = new Movie();
 terminator.set('title', 'Terminator');
 terminator.play();
@@ -99,7 +99,7 @@ var DownloadMovie = (function(){
 })();
 
 // Do heritage
-extend(Movie, DownloadMovie);
+extend(Movie.prototype, DownloadMovie);
 
 /**
  * Define Social Mixin
@@ -114,10 +114,10 @@ var MixinSocial = {
   }
 };
 // Do heritage
-extend(Movie, MixinSocial);
+extend(Movie.prototype, MixinSocial);
 
 // Create instance of Movie
-var ironman2 = Object.create(Movie);
+var ironman2 = new Movie();
 ironman2.set('title', 'Iron Man 2');
 // ...
 ironman2.share('V. Rivas'); // output: Sharing Iron Man 2 with V. Rivas
@@ -155,11 +155,14 @@ downey.set('name', 'Robert Downey Jr');
 ironman2.addAnActor(downey);
 ironman2.getActors();
 
-var bttf = Object.create(Movie);
+// Create instance of Movie
+var bttf = new Movie();
 bttf.set('title', 'Back to the Future');
 
+// Create instance of Actor
 var fox = Object.create(Actor);
 fox.set('name', 'Michael j Fox');
 
+// Add actor to Movie instance
 bttf.addAnActor(fox);
 bttf.getActors();
