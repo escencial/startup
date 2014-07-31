@@ -7,13 +7,26 @@ requirejs.config({
     //never includes a ".js" extension since
     //the paths config could be for a directory.
     paths: {
-        app: '../app'
+        app: '../app',
+        jquery: 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min'
+    },
+    shim: {
+        'jQuery': {
+            deps: ['jquery']
+        }
     }
 });
 
+var Movie = function () {};
+var Director = function (name) {
+    this.set('name', name);
+};
+
 // Start the main app logic.
-requirejs(['jquery.min'],
-function ($) {
+requirejs(['jquery', 'app/Movie', 'app/Director'],
+function ($, movie, director) {
     //jQuery, canvas and the app/sub module are all
     //loaded and can be used here now.
+    Movie.prototype = movie;
+    Director.prototype = director;
 });

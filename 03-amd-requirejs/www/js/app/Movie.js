@@ -1,14 +1,14 @@
-define(['Director'], function() {
-  this.attributes = [];
+define(['app/Director'], function() {
+  var attributes = [];
   return {
     get: function (attr) {
-      return this.attributes[attr];
+      return attributes[attr];
     },
     set: function (attr, value) {
-      this.attributes[attr] = value;
+      attributes[attr] = value;
     },
     play: function () {
-      console.log('Playing ' + this.get('title') + ' ...');
+      console.log('Playing ' + attributes['title'] + ' ...');
     },
     stop: function () {
       console.log('Stopped');

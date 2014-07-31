@@ -19,11 +19,19 @@
       <h1>Topic 3: AMD + RequireJS</h1>
     </header>
 
+    <article>
+      <code><p>var alien = new Movie(); ... </p></code>
+      <code><p>var ridleyScott = new Director('Ridley Scott'); //sets name in constructor </p></code>
+      <code><p>ridleyScott.set('quotes', ['Cast is everything.', 'Do what ...']); </p></code>
+      <code><p>alien.set('director', ridleyScott); </p></code>
+      <code><p>alien.get('director').speak(); //output: Ridley Scott says: 'Cast is...'</p></code>
+    </article>
+
+    <div class="quotes"></div>
+
     <footer class="footer"></footer>
 
     <script data-main="js/app.js" src="js/lib/require.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script>
   </body>
 
 </html>

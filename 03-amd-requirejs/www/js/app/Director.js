@@ -1,14 +1,30 @@
-define(function(Movie) {
-  this.properties = {};
-  properties.name = '';
+define( function() {
+  var properties = {};
+  properties['name'] = name;
   properties.quotes = [];
 
-  speak = function () {};
-
-  calling_speak = function (){};
 
   return {
-    quotes: properties.quotes
+    get: function (attr) {
+		return properties[attr];
+    },
+    set: function (attr, value) {
+		if (value instanceof Array) {
+			value.forEach(function (val) {
+				properties['quotes'].push(val);
+			});
+		} else {
+			properties[attr] = value;
+		}
+    },
+	speak: function () {
+		console.log(properties['name'] + ' says: ');
+		$('.quotes').append(properties['name'] + ' says: ');
+		properties.quotes.forEach (function (quote){
+			console.log(quote);
+			$('.quotes').append(quote);
+		});
+	}
   };
 
 });
