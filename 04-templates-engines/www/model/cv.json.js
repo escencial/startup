@@ -29,7 +29,7 @@ var cvJson = {
 			"content": "Solution design, implementation and maintenance of intelligent software invoice capture (ReadSoft)."
 		},
 	],
-	"skils": [
+	"skills": [
 		"php5 – oop – html5 – css3",
 		"zend framework – silex simfony",
 		"mssql - mysql - redbean",
