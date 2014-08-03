@@ -89,3 +89,7 @@ html {
 h1 {
   font-size: 26px!important;
 }
+
+.link_index {
+  padding: 1em;
+}
