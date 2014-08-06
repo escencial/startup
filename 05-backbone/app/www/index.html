@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Topic 5: MVC + Backbone</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Topic 5: MVC + Backbone">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/vendor/normalize.css">
+  </head>
+  
+  <body>
+    <!--[if lt IE 8]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+  <div class="container"></div>
+  <script id="entry-template" type="text/template">
+    <div class="row clearfix">
+      <header class="header">
+        <div class="column third">
+          <h1>Topic 5: MVC + Backbone</h1>
+        </div>
+      </header>
+    </div>
+    <div class="row clearfix">
+      <div class="column">
+        <section class="section">
+          <article class="article">
+            <input class="movie" type="text" />
+            <button class="add" type="submit">+</button>
+            <ul>
+              <% _.each(movies, function(movie){ %>
+                <li><%-movie.get("name")%></li>
+              <% }); %>
+            <ul>
+          </article>
+        </section>
+      </div>
+    </div>
+    </div>
+
+    <footer class="footer">
+      <div class="row clearfix">
+        <div class="column full">  
+
+        </div>
+      </div>
+    </footer>
+  </script>
+  <script data-main="../../app/app.js" src="../../vendor/js/require.js"></script>
+  </body>
+
+</html>
