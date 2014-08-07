@@ -1,9 +1,10 @@
+
 define([
   'jquery',
   'underscore',
   'backbone',
   'collections/movies'
-], function($, _, Backbone, MovieCollection){
+], function($, _, Backbone, MoviesCollection) {
   var MoviesListView = Backbone.View.extend({
     el: '.container',
     events: {
@@ -19,8 +20,12 @@ define([
       this.render();
     },
     initialize: function () {
-      // get collection
-      this.collection = new MovieCollection();
+      /*
+      require(['MoviesCollection'], function (MoviesColl) {
+        var MoviesCollection = new MoviesColl();
+      });
+      */
+      this.collection = new MoviesCollection();
     },
     keyAction: function(e) {
         var code = e.keyCode || e.which;
