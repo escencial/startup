@@ -1,60 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Topic 5: MVC + Backbone</title>
+<html lang="en">
+    <head>
+        <title>Topic 5: MVC + Backbone</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Topic 5: MVC + Backbone">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Topic 5: MVC + Backbone">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/vendor/normalize.css">
-  </head>
-  
-  <body>
-    <!--[if lt IE 8]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
+        <link rel="stylesheet" type="text/css" href="assets/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/vendor/normalize.css">
 
-  <div class="container"></div>
-  <script id="entry-template" type="text/template">
-    <div class="row clearfix">
-      <header class="header">
-        <div class="column third">
-          <h1>Topic 5: MVC + Backbone</h1>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row clearfix">
+              <header class="header">
+                <div class="column third">
+                  <h1>Topic 5: MVC + Backbone</h1>
+                </div>
+              </header>
+            </div>
+            <div class="row clearfix">
+                <div class="column">
+                    <section id="moviesApp" class="section">
+                        <article class="article">
+                            <header id="header">
+                                <input id="new-title" autofocus>
+                                <input id="new-director" >
+                                <input id="new-year" >
+                                <button id="add">+</button>
+                            </header>
+                            <ul id="movies-list"></ul>
+                        </article>
+                    </section>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="row clearfix">
+                    <div class="column full">  
+
+                    </div>
+                </div>
+            </footer>
         </div>
-      </header>
-    </div>
-    <div class="row clearfix">
-      <div class="column">
-        <section class="section">
-          <article class="article">
-            <input class="movie" type="text" />
-            <button class="add" type="submit">+</button>
-            <ul>
-              <% _.each(movies, function(movie){ %>
-                <li><%-movie.get("name")%></li>
-              <% }); %>
-            <ul>
-          </article>
-        </section>
-      </div>
-    </div>
-    </div>
+        <script type="text/template" id="movie-template">
+            <div class="view">
+                <label for="title"><%= title %></label>
+                <label for="director"><%= director %></label>
+                <label for="year"><%= year %></label>
+                <button class="destroy">-</button>
+            </div>
 
-    <footer class="footer">
-      <div class="row clearfix">
-        <div class="column full">  
+            <div class="editGroup">
+                <input id="title" class="edit" value="<%= title %>">
+                <input id="director" class="edit" value="<%= director %>">
+                <input id="year" class="edit" value="<%= year %>">
+                <button id="save" class="edit">save</button>
+            </div>
+        </script>
 
-        </div>
-      </div>
-    </footer>
-  </script>
-  <script data-main="../../app/config/app.js" src="../../vendor/js/require.js"></script>
-  </body>
+        <script src="../../vendor/js/jquery-min.js"></script>
+        <script src="../../vendor/js/underscore.js"></script>
+        <script src="../../vendor/js/backbone.js"></script>
+        <script src="../../vendor/js/backbone.localStorage.js"></script>
 
+        <script src="../models/movie.js"></script>
+        <script src="../collections/movies.js"></script>
+        <script src="../views/movies.js"></script>
+        <script src="../views/app.js"></script>
+        <script src="../config/app.js"></script>
+    </body>
 </html>
