@@ -8,12 +8,10 @@ app.MovieView = Backbone.View.extend({
         'click .destroy': 'deleteItem'
     },
     initialize: function () {
-        'use strict';
         this.listenTo(this.model, 'change', this.render);
         this.listenTo(this.model, 'destroy', this.remove);
     },
     render: function () {
-        'use strict';
         this.$el.html(this.template(this.model.toJSON()));
         this.$title = this.$('#title');
         this.$director = this.$('#director');
