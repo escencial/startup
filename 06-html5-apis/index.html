@@ -4,8 +4,13 @@
 		<title></title>
 	</header>
 	<body>
-		<textarea class= "storageme"></textarea>
-		<button class="cosas">cosas</button>
+		<style>
+			#holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
+			#holder.hover { border: 10px dashed #333; }
+		</style>
+		<p class="status"></p>
+		<textarea class= "storageme" id="holder"></textarea>
+		<button class="add">add</button>
 		<ul class="indexeddb"></ul>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -20,6 +25,7 @@
 				// set val in localStorage
 				localStorage.setItem("text", $(this).val());
 			});
+
 			/**
 			 * IndexedDb
 			 */
@@ -33,14 +39,15 @@
 				db.createObjectStore("os", {autoIncrement:true});
 			};
 			$(function () {
-				$('.cosas').on('click', function () {
+
+				$('.add').on('click', function () {
 					$('.indexeddb').html('');
 					var transaction = db.transaction(['os'], 'readwrite');
 					var store = transaction.objectStore("os");
 					var add = store.put({'text': $('.storageme').val() });
 					store.openCursor().onsuccess = function(e) {
 						var cursor = e.target.result;
-						if (cursor) {						
+						if (cursor) {
 							for(var field in cursor.value) {
 								$('.indexeddb').append($('<li>').html(cursor.value[field]));
 							}
@@ -49,6 +56,24 @@
 					}
 				});
 			});
+
+			/**
+			 * Drag & Drop
+			 */
+			var holder = document.getElementById('holder');
+			holder.ondrop = function (e) {
+			  e.preventDefault();
+			  var file = e.dataTransfer.files[0],
+			  reader = new FileReader();
+			  reader.onload = function (event) {
+			    holder.value = event.target.result;
+			    $('.storageme').trigger('keypress');
+			  };
+			  reader.readAsText(file,"UTF-8");
+
+			  return false;
+			};
+
 		</script>
 	</body>
 <html>
