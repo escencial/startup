@@ -6,6 +6,7 @@
 	<body>
 		<textarea class= "storageme"></textarea>
 		<button class="cosas">cosas</button>
+		<ul class="indexeddb"></ul>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			/**
@@ -22,20 +23,30 @@
 			/**
 			 * IndexedDb
 			 */
-			var openRequest = indexedDB.open("todos2");
+			var openRequest = indexedDB.open("db", 1);
 			var db = {};
 			openRequest.onsuccess = function (e) { 
 				db = e.target.result;
 			};
 			openRequest.onupgradeneeded = function (e) {
 				db = e.target.result;
-				db.createObjectStore("gente", {keypath: "clave"});
+				db.createObjectStore("os", {autoIncrement:true});
 			};
 			$(function () {
-				$('.cosas').on('click', function () {					
-					var transaction = db.transaction(['gente'], 'readwrite');
-					var store = transaction.objectStore("gente");
-					var add = store.add({key: 1, 'titulo':'titulo'});
+				$('.cosas').on('click', function () {
+					$('.indexeddb').html('');
+					var transaction = db.transaction(['os'], 'readwrite');
+					var store = transaction.objectStore("os");
+					var add = store.put({'text': $('.storageme').val() });
+					store.openCursor().onsuccess = function(e) {
+						var cursor = e.target.result;
+						if (cursor) {						
+							for(var field in cursor.value) {
+								$('.indexeddb').append($('<li>').html(cursor.value[field]));
+							}
+	            cursor.continue();
+						}
+					}
 				});
 			});
 		</script>
