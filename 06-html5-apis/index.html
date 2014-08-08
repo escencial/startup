@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<title></title>
+	</header>
+	<body>
+		<textarea class= "storageme"></textarea>
+		<button class="cosas">cosas</button>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			/**
+			 * localStorage
+			 */
+			$(function(){
+				// get val from localStorage
+				$(".storageme").val(localStorage.getItem("text"));
+			});
+			$(".storageme").on('keypress', function() {
+				// set val in localStorage
+				localStorage.setItem("text", $(this).val());
+			});
+			/**
+			 * IndexedDb
+			 */
+			var openRequest = indexedDB.open("todos2");
+			var db = {};
+			openRequest.onsuccess = function (e) { 
+				db = e.target.result;
+			};
+			openRequest.onupgradeneeded = function (e) {
+				db = e.target.result;
+				db.createObjectStore("gente", {keypath: "clave"});
+			};
+			$(function () {
+				$('.cosas').on('click', function () {					
+					var transaction = db.transaction(['gente'], 'readwrite');
+					var store = transaction.objectStore("gente");
+					var add = store.add({key: 1, 'titulo':'titulo'});
+				});
+			});
+		</script>
+	</body>
+<html>
