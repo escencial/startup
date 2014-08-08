@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
+
 	<header>
+
 		<title></title>
-	</header>
-	<body>
 		<style>
 			#holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
 			#holder.hover { border: 10px dashed #333; }
 		</style>
+
+	</header>
+
+	<body>
+		
 		<p class="status"></p>
 		<textarea class= "storageme" id="holder"></textarea>
 		<button class="add">add</button>
+		
 		<ul class="indexeddb"></ul>
+
+		<p> water effect </p>
+		<canvas id="canvas"></canvas>
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			/**
@@ -74,6 +84,34 @@
 			  return false;
 			};
 
+			/**
+			 * Animate
+			 */
+			var canvas  = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+
+			var x =  getRam(100, 200);
+			var y = getRam(1, 80);
+			var speed = 15;
+
+			function animate() {
+			    requestAnimationFrame(animate);
+			    x += speed;
+			    if (x <= 0 || x >= canvas.width){
+			        speed = -speed;
+			    }
+					var draw = function () {
+					    ctx.clearRect(0 , 0, 500, getRam(1, 100));
+					    ctx.fillStyle = "blue";
+					    ctx.fillRect(x, y, getRam(1, 50), getRam(1, 100));
+					}();
+			}
+
+			function getRam (min, max) {
+				return Math.floor((Math.random() * max) + min);
+			}
+
+			animate();
 		</script>
 	</body>
 <html>
